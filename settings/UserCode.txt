@@ -1,0 +1,3 @@
+print("Kod użytkownika został wykonany")
+print("W tym miejscu należy napisać możliwe do wyboru opcje")
+print("Np: wykonanie zapytania SQL na bazie danych, lub zamkniecie programu")
