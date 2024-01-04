@@ -1,3 +1,4 @@
+import json
 import locale
 import sys
 import os
@@ -108,13 +109,22 @@ class Database:
             self.connection.commit()
 
     def get_items(self, table):
-        '''Metoda pobierająca spis rzeczy,
-            które znajdują się w magazynie'''
+        ''' Metoda pobierająca spis rzeczy,
+            które znajdują się w magazynie '''
         try:
             self.cursor.execute("SELECT * FROM " + table)
             return self.cursor.fetchall()
         except Exception as e:
             print("Nie znaleziono tabeli:", table)
+
+    def create_database(self):
+        ''' metoda do tworzenia bazy danych pobiera polecenie SQL do tworzenia bazy danych
+        z pliku JSON z katalogu settings '''
+        with open("settings/newdatabase.json", "r", encoding="UTF-8") as file:
+            data = json.load(file)
+            sql_command = data.get('sql_command')
+        print("SQL do tworzenia nowej bazy danych:", sql_command, type(sql_command))
+        # self.execute_query(query=f"{database[0]}")
 
     def clone_database(self):
         ''' metoda do tworzenia kopii zapasowej bazy danych '''
@@ -160,7 +170,7 @@ class MainWindow(QMainWindow):
         self.setWindowIcon(self.icon)
         print(self.geometry())
 
-        self.setGeometry(0, 0, 1400, 900)
+        self.setGeometry(0, 0, 1400, 780)
         # self.showMaximized()
         # self.scale_app()
 
@@ -436,7 +446,7 @@ class MainWindow(QMainWindow):
             self.info_box("Uwaga!", "Podany produkt nie ma zaznaczonej lokalizacji")
 
     def info_box(self, title, msg):
-        ''' metoda do tworzenia i uruchamiania okienka z infromacją;
+        ''' metoda do tworzenia i uruchamiania okienka z infromacją dla użytkownika;
         title-tytuł okna, msg-informacja w oknie'''
         info_box = QMessageBox()
         info_box.setIcon(QMessageBox.Icon.Warning)
@@ -1120,8 +1130,10 @@ class MainWindow(QMainWindow):
             for item in items:
                 # możliwość rozbudowania o zliczanie zarobku pobierając datę
                 # przyda sie do zrobienia raportów
-                calc += float(item[5])
-                self.calculate = float(calc)
+                # print("item5:", item[5], "item6:", item[6], "item7:", item[7])
+                if item[6] == "Zrealizowane" and item[7] == "Opłacone":
+                    calc += float(item[5])
+                    self.calculate = float(calc)
             print("Zarobek ze zrealizowanych zamówień: ", self.calculate, "zł.")
             self.window.labelCalculate.setText(
                 f"Zarobek ze zrealizowanych zamówień: <font color='#006400'>{self.calculate:.2f} zł.</font>")
