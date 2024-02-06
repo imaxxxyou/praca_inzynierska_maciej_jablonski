@@ -166,12 +166,12 @@ class MainWindow(QMainWindow):
         ''' Metoda uruchamiająca GUI '''
         # Inicjalizacja Widgetów PySide6
         self.setWindowTitle("Herbal Store - Maciej Jabłoński - Praca Inżynierska - UJD w Częstochowie")
-        self.icon = QIcon("forms/HerbalStoreLogo.png")
+        self.icon = QIcon("forms/logoHS.png")
         self.setWindowIcon(self.icon)
         print(self.geometry())
 
-        self.setGeometry(0, 0, 1400, 780)
-        # self.showMaximized()
+        self.setGeometry(50, 50, 1400, 780)
+        self.showMaximized()
         # self.scale_app()
 
         # Dopisanie parentów do odpowiednich pól
@@ -423,7 +423,7 @@ class MainWindow(QMainWindow):
             self.window.clientsCountLabel.setText("Ilość klientów: " + str(countClients))
             self.set_table_style()
         except Exception as e:
-            print("Błąd", e)
+            print("Błąd w metodzie load_table()", e)
         self.load_documents()
 
     def open_loc(self):
@@ -718,7 +718,7 @@ class MainWindow(QMainWindow):
         values = self.selection_row(table=self.window.tableOrders)
         print("Values:", values)
         print("archiwizuje zamówienie")
-        if ("Opłacone" in values and "Zrealizowane" in values) or "Anulowane" in values:
+        if ("Oplacone" in values and "Zrealizowane" in values) or "Anulowane" in values:
             print("Archiwizuję zamówienie o id:", values[0])
             self.db.execute_query(query=f"SET IDENTITY_INSERT dbo.zamowienia_archiwum ON;")
             self.db.execute_query(
@@ -896,7 +896,7 @@ class MainWindow(QMainWindow):
             self.db.execute_query(query=f"UPDATE dbo.Zamowienia "
                                         f"SET Status_platnosci = '{status}', data_platnosci = NULL "
                                         f"WHERE id = {orderid};")
-        elif status == "Opłacone":
+        elif status == "Oplacone":
             self.db.execute_query(query=f"UPDATE dbo.Zamowienia "
                                         f"SET Status_platnosci = '{status}', data_platnosci = GETDATE() "
                                         f"WHERE id = {orderid};")
@@ -959,8 +959,8 @@ class MainWindow(QMainWindow):
 
             # dodanie podmenu do zmianu statusu płatności
             changepaymentAct = contextMenu.addMenu("Zmień status płatności")
-            readyAct = QAction("Opłacone", self)
-            readyAct.triggered.connect(lambda: self.changePaymentStatus(status="Opłacone"))
+            readyAct = QAction("Oplacone", self)
+            readyAct.triggered.connect(lambda: self.changePaymentStatus(status="Oplacone"))
             changepaymentAct.addAction(readyAct)
             waitingAct = QAction("Oczekuje", self)
             waitingAct.triggered.connect(lambda: self.changePaymentStatus(status="Oczekuje"))
@@ -998,6 +998,7 @@ class MainWindow(QMainWindow):
             dearchiveAct.triggered.connect(self.dearchive_order)
             contextMenu.addSeparator()
 
+            #Zakładka produkty
         if self.window.tableAll.currentIndex() == 1:
             addProductAct = contextMenu.addAction("Dodaj Produkt")
             addProductAct.triggered.connect(self.addNewUnit)
@@ -1123,7 +1124,7 @@ class MainWindow(QMainWindow):
         data.clear()
         items = self.db.get_items(table)
         self.actualItem = items
-        print("Pobrana lista z bazy danych:", items)
+        print(table, "Pobrana lista z bazy danych:", items)
         # kod programu do obliczania zarobku z zamówień
         if table == "dbo.zamowienia_archiwum":
             calc = 0.0
@@ -1131,7 +1132,7 @@ class MainWindow(QMainWindow):
                 # możliwość rozbudowania o zliczanie zarobku pobierając datę
                 # przyda sie do zrobienia raportów
                 # print("item5:", item[5], "item6:", item[6], "item7:", item[7])
-                if item[6] == "Zrealizowane" and item[7] == "Opłacone":
+                if item[6] == "Zrealizowane" and item[7] == "Oplacone":
                     calc += float(item[5])
                     self.calculate = float(calc)
             print("Zarobek ze zrealizowanych zamówień: ", self.calculate, "zł.")
@@ -1177,7 +1178,7 @@ class MainWindow(QMainWindow):
 
                     if item == "Oczekuje":
                         tableItem.setBackground(QColor(255, 255, 102))  # Jasny żółty
-                    elif item == "Opłacone":
+                    elif item == "Oplacone":
                         tableItem.setBackground(QColor(144, 238, 144))  # Jasny zielony
                     elif item == "Anulowane":
                         tableItem.setBackground(QColor(170, 172, 173))  # Nieciemny szary

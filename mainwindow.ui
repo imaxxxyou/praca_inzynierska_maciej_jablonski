@@ -1313,7 +1313,7 @@ selection-background-color: qconicalgradient(cx:0.493, cy:1, angle:328.6, stop:0
      <item row="8" column="6">
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>UJD w Częstocohwie WNŚPiT Maciej Jabłoński - Praca Inżynierska - Informatyka</string>
+        <string>UJD w Częstochowie - Maciej Jabłoński - Praca Inżynierska - Informatyka</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
