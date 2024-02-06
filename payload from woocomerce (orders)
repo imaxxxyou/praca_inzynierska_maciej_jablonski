@@ -1,0 +1,147 @@
+[
+  {
+    "id": 334,
+    "parent_id": 0,
+    "status": "processing",
+    "currency": "PLN",
+    "version": "8.4.0",
+    "prices_include_tax": false,
+    "date_created": "2024-01-18T14:40:09",
+    "date_modified": "2024-01-18T14:40:12",
+    "discount_total": "0.00",
+    "discount_tax": "0.00",
+    "shipping_total": "20.99",
+    "shipping_tax": "0.00",
+    "cart_tax": "0.00",
+    "total": "32.99",
+    "total_tax": "0.00",
+    "customer_id": 1,
+    "order_key": "wc_order_FDfLaHHSE9Wpa",
+    "billing": {
+      "first_name": "Maciej",
+      "last_name": "Jab\u0142o\u0144ski",
+      "company": "Silverfunk music",
+      "address_1": "P\u0105tn\u00f3w",
+      "address_2": "181",
+      "city": "P\u0105tn\u00f3w",
+      "state": "",
+      "postcode": "98-335",
+      "country": "PL",
+      "email": "silverfunkmusic@gmail.com",
+      "phone": "693336613"
+    },
+    "shipping": {
+      "first_name": "Maciej",
+      "last_name": "Jab\u0142o\u0144ski",
+      "company": "Silverfunk music",
+      "address_1": "P\u0105tn\u00f3w",
+      "address_2": "181",
+      "city": "P\u0105tn\u00f3w",
+      "state": "",
+      "postcode": "98-335",
+      "country": "PL",
+      "phone": ""
+    },
+    "payment_method": "cod",
+    "payment_method_title": "Za pobraniem",
+    "transaction_id": "",
+    "customer_ip_address": "164.127.229.202",
+    "customer_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "created_via": "checkout",
+    "customer_note": "",
+    "date_completed": null,
+    "date_paid": null,
+    "cart_hash": "df1a88ad589f1b8c17509523913b552f",
+    "number": "334",
+    "meta_data": [
+      {
+        "id": 41,
+        "key": "_parcel_machine_desc",
+        "value": "STACJA CIRCLE K"
+      },
+      {
+        "id": 40,
+        "key": "_parcel_machine_id",
+        "value": "POP-WIE10"
+      },
+      {
+        "id": 37,
+        "key": "is_vat_exempt",
+        "value": "no"
+      }
+    ],
+    "line_items": [
+      {
+        "id": 10,
+        "name": "Kula do K\u0105pieli z P\u0142atkami Kwiat\u00f3w LAWENDOWA",
+        "product_id": 262,
+        "variation_id": 0,
+        "quantity": 1,
+        "tax_class": "",
+        "subtotal": "12.00",
+        "subtotal_tax": "0.00",
+        "total": "12.00",
+        "total_tax": "0.00",
+        "taxes": [],
+        "meta_data": [],
+        "sku": "44-1",
+        "price": 12,
+        "image": {
+          "id": "239",
+          "src": "https://zwolnejreki.com.pl/wp-content/uploads/2024/01/KULA-DO-KAPIELI-LAWENDA--scaled.jpg"
+        },
+        "parent_name": null
+      }
+    ],
+    "tax_lines": [],
+    "shipping_lines": [
+      {
+        "id": 11,
+        "method_title": "InPost Paczkomat 24/7",
+        "method_id": "easypack_parcel_machines",
+        "instance_id": "4",
+        "total": "20.99",
+        "total_tax": "0.00",
+        "taxes": [],
+        "meta_data": [
+          {
+            "id": 85,
+            "key": "logo",
+            "value": "",
+            "display_key": "logo",
+            "display_value": ""
+          }
+        ]
+      }
+    ],
+    "fee_lines": [],
+    "coupon_lines": [],
+    "refunds": [],
+    "payment_url": "https://zwolnejreki.com.pl/zamowienie/order-pay/334/?pay_for_order=true&key=wc_order_FDfLaHHSE9Wpa",
+    "is_editable": false,
+    "needs_payment": false,
+    "needs_processing": true,
+    "date_created_gmt": "2024-01-18T13:40:09",
+    "date_modified_gmt": "2024-01-18T13:40:12",
+    "date_completed_gmt": null,
+    "date_paid_gmt": null,
+    "currency_symbol": "z\u0142",
+    "_links": {
+      "self": [
+        {
+          "href": "https://zwolnejreki.com.pl/wp-json/wc/v3/orders/334"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://zwolnejreki.com.pl/wp-json/wc/v3/orders"
+        }
+      ],
+      "customer": [
+        {
+          "href": "https://zwolnejreki.com.pl/wp-json/wc/v3/customers/1"
+        }
+      ]
+    }
+  }
+]

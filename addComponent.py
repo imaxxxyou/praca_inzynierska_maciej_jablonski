@@ -11,12 +11,11 @@ class AddProductWindow(QDialog):
         self.init_ui()
 
 
-
     def init_ui(self):
         ''' załadowanie formularza dodania produktu'''
         loader = QUiLoader()
         self.window = loader.load("addComponentForm.ui", self)
-        self.window.setWindowTitle("Dodaj składnik do receptury")
+        self.setWindowTitle("Dodaj składnik do receptury")
         self.cancelButton = QPushButton()
         self.addButton = QPushButton()
         self.comboBox = QComboBox()

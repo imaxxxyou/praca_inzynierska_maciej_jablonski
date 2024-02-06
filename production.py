@@ -205,6 +205,8 @@ class OrderFormWindow(QDialog):
         '''Metoda służąca do aktualizowania tabeli składników potrzebnych do wytworzenia danych produktów '''
         print('Dorzucam składnik do tabeli "tableWidgetNeed" potrzebny do wytworzenia podanej produkcji.')
         # czyszczenie zawartosci tabeli
+        with open("docs/slowa_nieskonczone.txt", "r", encoding="UTF-8") as file:
+            lista_nieskonczonosci = file.readline().replace("\n", "")
         self.window.tableWidgetNeed.clearContents()
         self.window.tableWidgetNeed.setRowCount(0)
         for i, component_id in enumerate(self.component_id):
@@ -239,6 +241,14 @@ class OrderFormWindow(QDialog):
                     self.window.tableWidgetNeed.item(i, 3).setBackground(QColor(255, 144, 144))
                     # zresetowanie obliczenia zapotrzebowania w celu obliczenia zapotrzebowania dla kolejnego skladnika
                     oblicz = 0
+                # elif item in lista_nieskonczonosci:
+                #     print("ustawiam zielony")
+                #     self.window.tableWidgetNeed.setItem(i, 3, QTableWidgetItem(str("Ilość wystarczająca")))
+                #     # Kolorowanie komórki na jasny zielony
+                #     self.window.tableWidgetNeed.item(i, 3).setBackground(QColor(144, 238, 144))
+                #     self.window.tableWidgetNeed.setColumnWidth(3, 120)
+                #     # zresetowanie obliczenia zapotrzebowania w celu obliczenia zapotrzebowania dla kolejnego skladnika
+                #     oblicz = 0
                 else:
                     print("ustawiam zielony")
                     self.window.tableWidgetNeed.setItem(i, 3, QTableWidgetItem(str("Ilość wystarczająca")))

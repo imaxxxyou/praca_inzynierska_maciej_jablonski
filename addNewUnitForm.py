@@ -206,7 +206,7 @@ class OrderFormWindow(QDialog):
                 info_box.setIcon(QMessageBox.Icon.Warning)
                 info_box.setWindowTitle("Uwaga")
                 info_box.setText(
-                    "Dodano składnik: "+nazwaproduktu+" do bazy danych." )
+                    "Dodano produkt: "+nazwaproduktu+" do bazy danych." )
                 info_box.addButton(QMessageBox.StandardButton.Ok)
                 info_box.exec()
                 self.close()
@@ -216,7 +216,7 @@ class OrderFormWindow(QDialog):
                 info_box.setIcon(QMessageBox.Icon.Warning)
                 info_box.setWindowTitle("Uwaga")
                 info_box.setText(
-                    "Wprowadź nazwę i lokalizację w magazynie.\n\nBłąd:\n" + str(e))
+                    "Wprowadź nazwę produktu i lokalizację w magazynie.\n\nBłąd:\n" + str(e))
                 info_box.addButton(QMessageBox.StandardButton.Ok)
                 info_box.exec()
         else:

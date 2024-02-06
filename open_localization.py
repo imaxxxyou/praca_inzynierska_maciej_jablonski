@@ -74,6 +74,8 @@ def main(values):
 
         pulsating_point.draw(screen)
 
+        # mozliwosc dodawania streamingu z kamery... z magazynu.
+
         font = pygame.font.Font(None, 36)
         text = font.render(f'Produkt: {values[1]}  ({pulsating_point.x}, {pulsating_point.y})', True, (255, 255, 255))
         screen.blit(text, (10, height - 50))

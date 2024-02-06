@@ -29,7 +29,7 @@ def logo_animation():
     # Rozpocznij animację
     clock = pygame.time.Clock()
     fps = 60
-    scale_speed = 4
+    scale_speed = 10
 
     while True:
         for event in pygame.event.get():
@@ -54,7 +54,7 @@ def logo_animation():
         clock.tick(fps)
 
         # Zatrzymaj animację po osiągnięciu docelowych rozmiarów
-        if logo_width >= 600 and logo_height >= 300:
+        if logo_width >= 500 and logo_height >= 300:
             break
 
     time.sleep(1)  # Poczekaj przed zamknięciem

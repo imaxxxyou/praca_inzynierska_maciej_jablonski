@@ -45,6 +45,9 @@ class OrderFormWindow(QDialog):
         # ustawienie ostatniego id produktu + 1 w celu wyświetlenia nowego id dodawanego produktu
         self.orderid = self.db.execute_query(query=f"SELECT MAX(ID) AS ID FROM dbo.Zamowienia;")
         print(self.orderid[0])
+
+        if self.orderid[0][0] == None or self.orderid[0][0] == "None":
+            self.orderid = [(0,)]
         self.orderid = int(self.orderid[0][0]) + 1
         self.window.labelOrderID.setText(str(self.orderid))
 

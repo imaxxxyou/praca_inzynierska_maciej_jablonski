@@ -398,6 +398,18 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>comboBox</tabstop>
+  <tabstop>lineEditAdress</tabstop>
+  <tabstop>comboBox_2</tabstop>
+  <tabstop>addProductButton</tabstop>
+  <tabstop>lineEditWarnings</tabstop>
+  <tabstop>removeButton</tabstop>
+  <tabstop>acceptOrderButton</tabstop>
+  <tabstop>cancelButton</tabstop>
+  <tabstop>tableWidget</tabstop>
+  <tabstop>label_8</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

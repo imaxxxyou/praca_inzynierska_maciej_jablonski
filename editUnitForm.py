@@ -75,6 +75,7 @@ class OrderFormWindow(QDialog):
         print("ilosc:", int(self.values[4]))
         self.window.spinBoxQuantity.setValue(int(self.values[4]))
         self.window.lineEditDescription.setText(str(self.values[5]))
+        self.window.lineEditLocDesc.setText(str(self.values[6]))
 
         self.cords = self.db.execute_query(query=f"SELECT x,y FROM dbo.Lokalizacja_Produktu "
                                                  f"WHERE id_produktu = {int(self.values[0])};")
@@ -208,7 +209,7 @@ class OrderFormWindow(QDialog):
 
         koordynaty_lokalizacji = self.cords
         print("Kordynaty lokalizacji: x=", koordynaty_lokalizacji[0], "y=", koordynaty_lokalizacji[1])
-        print("ID produktu:", self.productid[0], type(self.productid[0]))
+        print("ID produktu:", self.productid, type(self.productid))
 
         # Aktualizacja danych w tabeli dbo.Produkty
         self.db.execute_query(query=f"UPDATE dbo.Produkty "
@@ -218,12 +219,11 @@ class OrderFormWindow(QDialog):
                                     f"Dostepna_ilosc = {ilosc}, "
                                     f"Opis = '{opis}', "
                                     f"Lokalizacja = '{opis_lokalizacji}' "
-                                    f"WHERE ID = {self.productid[0]};")
+                                    f"WHERE ID = {self.productid};")
 
         # Usuwanie aktualnej receptury
         self.db.execute_query(query=f"DELETE FROM dbo.Produkty_Skladniki "
-                                    f"WHERE id_produktu = {self.productid[0]} ;")
-
+                                    f"WHERE id_produktu = {self.productid} ;")
 
         # Aktualizacja receptury w tabeli dbo.Produkty_Skladniki
         # pętla dodająca recepture do odpowiedniej tabeli
@@ -234,15 +234,14 @@ class OrderFormWindow(QDialog):
                                                           f"WHERE Nazwa_SKladnika = '{item[0]}';")
             self.skladnikid = self.skladnikid[0]
             print(self.skladnikid[0], type(self.skladnikid[0]))
-
             self.db.execute_query(query=f"INSERT INTO dbo.Produkty_Skladniki "
-                                        f"VALUES ({self.productid[0]}, {self.skladnikid[0]}, {item[2]});")
+                                        f"VALUES ({self.productid}, {self.skladnikid[0]}, {item[2]});")
 
         # edycja lokalizacji produktu
         self.db.execute_query(query=f"DELETE FROM dbo.Lokalizacja_Produktu "
-                                    f"WHERE id_produktu = {self.productid[0]} ;")
+                                    f"WHERE id_produktu = {self.productid} ;")
         self.db.execute_query(query=f"INSERT INTO dbo.Lokalizacja_Produktu "
-                                    f"VALUES ({self.productid[0]},{koordynaty_lokalizacji[0]},{koordynaty_lokalizacji[1]});")
+                                    f"VALUES ({self.productid},{koordynaty_lokalizacji[0]},{koordynaty_lokalizacji[1]});")
 
         self.close()
 

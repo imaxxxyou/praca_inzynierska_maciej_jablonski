@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>519</width>
-    <height>378</height>
+    <height>409</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -67,21 +67,14 @@
       <item row="1" column="0" colspan="3">
        <widget class="QTabWidget" name="tabWidget">
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab_3">
          <attribute name="title">
           <string>Baza Danych</string>
          </attribute>
          <layout class="QGridLayout" name="gridLayout_2">
-          <item row="0" column="0" colspan="2">
-           <widget class="QLabel" name="label_2">
-            <property name="text">
-             <string>Ustawienia połączenia z serwerem:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0" colspan="3">
+          <item row="2" column="0" colspan="3">
            <widget class="QFrame" name="frame">
             <property name="frameShape">
              <enum>QFrame::Box</enum>
@@ -169,6 +162,41 @@
               <widget class="QLineEdit" name="lineEditDataBasePassword"/>
              </item>
             </layout>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Ustawienia połączenia z serwerem:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QPushButton" name="pushButtonCloneDatabase">
+            <property name="text">
+             <string>Utwórz kopię zapasową</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QPushButton" name="pushButtonCreateDatabase">
+            <property name="text">
+             <string>Utwórz bazę danych</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="2">
+           <widget class="QPushButton" name="pushButtonBackupDatabase">
+            <property name="text">
+             <string>Przywróć bazę danych</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="2">
+           <widget class="QLabel" name="label_15">
+            <property name="text">
+             <string>Korzystając z poświadczeń:</string>
+            </property>
            </widget>
           </item>
          </layout>

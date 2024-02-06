@@ -52,31 +52,38 @@ class OrderFormWindow(QDialog):
         self.unit = self.window.comboBoxUnit.currentText()
         self.price = self.window.doubleSpinBoxPrice.value()
         self.quantity = self.window.spinBox.value()
-        print("Dodaję Składnik:", self.name, type(self.name))
+        print("Dodaję Składnik:", "|", self.name, "|", type(self.name))
         print(self.unit, type(self.unit))
         print("w ilości:", self.quantity, type(self.quantity))
         print("Cena składnika:", self.price, type(self.price))
-        try:
-            self.db.execute_query(query=f"INSERT INTO dbo.Skladniki "
-                                        f"VALUES ('{self.name}','{self.unit}',{self.quantity},{self.price}, '{self.desc}');")
+        if self.name != "":
+            try:
+                self.db.execute_query(query=f"INSERT INTO dbo.Skladniki "
+                                            f"VALUES ('{self.name}','{self.unit}',{self.quantity},{self.price}, '{self.desc}');")
 
-            # Wyskakujący Message Box z informacją
-            info_box = QMessageBox()
-            info_box.setIcon(QMessageBox.Icon.Information)
-            info_box.setWindowTitle("Informacja")
-            info_box.setText("Pomyślnie dodano nowy składnik: " + self.name + " do magazynu.")
-            info_box.addButton(QMessageBox.StandardButton.Ok)
-            info_box.exec()
-        except Exception as e:
-            print("Błąd: ", e)
+                # Wyskakujący Message Box z informacją
+                info_box = QMessageBox()
+                info_box.setIcon(QMessageBox.Icon.Information)
+                info_box.setWindowTitle("Informacja")
+                info_box.setText("Pomyślnie dodano nowy składnik: " + self.name + " do magazynu.")
+                info_box.addButton(QMessageBox.StandardButton.Ok)
+                info_box.exec()
+                self.close()
+            except Exception as e:
+                print("Błąd: ", e)
+                info_box = QMessageBox()
+                info_box.setIcon(QMessageBox.Icon.Warning)
+                info_box.setWindowTitle("Uwaga")
+                info_box.setText("Nie dodano składnika do magazynu.\nSprawdź pisownię i spróbuj jeszcze raz.\n\nBłąd:\n"+str(e))
+                info_box.addButton(QMessageBox.StandardButton.Ok)
+                info_box.exec()
+        else:
             info_box = QMessageBox()
             info_box.setIcon(QMessageBox.Icon.Warning)
             info_box.setWindowTitle("Uwaga")
-            info_box.setText("Nie dodano składnika do magazynu.\nSprawdź pisownię i spróbuj jeszcze raz.\n\nBłąd:\n"+str(e))
+            info_box.setText("Nie dodano składnika do magazynu.\nWprowadź nazwę składnika.")
             info_box.addButton(QMessageBox.StandardButton.Ok)
             info_box.exec()
-
-        self.close()
 
 
 def main():
